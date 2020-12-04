@@ -1,16 +1,17 @@
-#include "structures.h"
+#include <structures.h>
 
-int parse_file(string filename)
+std::list <point>	parse_file(std::string filename)
 {
 	std::list<point> l;
-	ifstream in;
+	std::ifstream file;
 	std::string line;
 
-	in.open(filename);
-	while (in.good())
+	file.open(filename);
+	while (file.good())
 	{
-		getline(in, line);
-		printf("%s\n", line);
+		getline(file, line);
+		std::cout << line;
+		std::cout << '\n';
 	}
 
 	std::string s = "(123,123,123) (124,124,124)";
@@ -23,4 +24,5 @@ int parse_file(string filename)
 		std::smatch m = *i;
 		std::cout << m.str() << " at position " << m.position() << '\n';
 	}
+	return l;
 }

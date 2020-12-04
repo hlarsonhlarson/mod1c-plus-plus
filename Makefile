@@ -1,4 +1,4 @@
-PHONY: clean fclean re make all
+PHONY: clean fclean re all
 
 FILENAMES = parse_map.cpp
 FILENAMES += parse_file.cpp

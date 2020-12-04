@@ -3,6 +3,7 @@
 #include <regex>
 #include <list>
 #include <stdio.h>
+#include <fstream>
 
 struct point
 {
@@ -18,5 +19,5 @@ struct list
 	struct list *next;
 };
 
-int parse_file(string filename);
+std::list<point> parse_file(std::string filename);
 
