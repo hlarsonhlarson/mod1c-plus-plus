@@ -5,19 +5,14 @@
 #include <stdio.h>
 #include <fstream>
 
-struct point
+class Point
 {
+public:
 	int x;
 	int y;
 	int z;
 	int theta;
+	Point(int xt,int yt,int zt,int thetat);
 };
 
-struct list
-{
-	void *data;
-	struct list *next;
-};
-
-std::list<point> parse_file(std::string filename);
-
+std::list<Point> parse_file(std::string filename);

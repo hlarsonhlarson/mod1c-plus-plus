@@ -1,8 +1,45 @@
 #include <structures.h>
 
-std::list <point>	parse_file(std::string filename)
+Point set_point(std::string coords)
 {
-	std::list<point> l;
+	std::regex r("([0-9]+)");
+	std::string s = coords;
+	int counter = 0;
+	int x = 0;
+	int y = 0;
+	int z = 0;
+
+	for(std::sregex_iterator i = std::sregex_iterator(s.begin(), s.end(), r);
+			i != std::sregex_iterator();
+			++i )
+	{
+		std::smatch m = *i;
+		if (counter == 0)
+		{
+			x = stoi(m.str());
+		}
+		else if (counter == 1)
+		{
+			y = stoi(m.str());
+		}
+		else if (counter == 2)
+		{
+			z = stoi(m.str());
+		}
+		else
+		{
+			std::cout << "bad coordinates, too many";
+			exit(1);
+		}
+		counter++;
+	}
+	return Point(x, y, z, 1);
+}
+
+
+std::list <Point>	parse_file(std::string filename)
+{
+	std::list<Point> l;
 	std::ifstream file;
 	std::string line;
 
@@ -10,19 +47,17 @@ std::list <point>	parse_file(std::string filename)
 	while (file.good())
 	{
 		getline(file, line);
-		std::cout << line;
-		std::cout << '\n';
-	}
+		std::regex r("\\(([0-9]+),([0-9]+),([0-9]+)\\)");
 
-	std::string s = "(123,123,123) (124,124,124)";
-	std::regex r("\\(([0-9]+),([0-9]+),([0-9]+)\\)");
-
-	for(std::sregex_iterator i = std::sregex_iterator(s.begin(), s.end(), r);
-			i != std::sregex_iterator();
-			++i )
-	{
-		std::smatch m = *i;
-		std::cout << m.str() << " at position " << m.position() << '\n';
+		for(std::sregex_iterator i = std::sregex_iterator(line.begin(), line.end(), r);
+				i != std::sregex_iterator();
+				++i )
+		{
+			std::smatch m = *i;
+			Point local_point = set_point(m.str());
+			l.push_back(local_point);
+		}
 	}
 	return l;
 }
+
