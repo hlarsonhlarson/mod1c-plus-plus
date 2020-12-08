@@ -11,10 +11,17 @@ int main(int argc, char **argv)
 	for (auto v : points)
 	{
 		std::cout << "Point\n";
-		std::cout << v.coords[0][0];
-		std::cout << v.coords[1][1];
-		std::cout << v.coords[2][2];
-		std::cout << v.coords[3][3];
+		std::cout << v.coords[0][0] << "\n";
+		std::cout << v.coords[1][1] << "\n";
+		std::cout << v.coords[2][2] << "\n";
+		std::cout << v.coords[3][3] << "\n";
+		v.scale(10);
+		std::cout << "After rotation" << "\n";
+		std::cout << v.coords[0][0] << "\n";
+		std::cout << v.coords[1][1] << "\n";
+		std::cout << v.coords[2][2] << "\n";
+		std::cout << v.coords[3][3] << "\n";
+
 	}
 	return 0;
 }

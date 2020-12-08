@@ -15,6 +15,7 @@ Point::Point(int xt,int yt,int zt,int thetat)
 	coords[3][3] = thetat;
 }
 
+
 void Point::rotate_x(int alpha)
 {
 	int rotation_matrix[4][4] = {
@@ -25,6 +26,7 @@ void Point::rotate_x(int alpha)
 	};
 	point_transform(&coords, rotation_matrix);
 }
+
 
 void Point::rotate_y(int alpha)
 {
@@ -72,4 +74,3 @@ void Point::translate(int *pos_vector)
 	};
 	point_transform(&coords, translation_matrix);
 }
-
