@@ -11,9 +11,10 @@ int main(int argc, char **argv)
 	for (auto v : points)
 	{
 		std::cout << "Point\n";
-        	std::cout << v.x << "\n";
-        	std::cout << v.y << "\n";
-        	std::cout << v.z << "\n";
+		std::cout << v.coords[0][0];
+		std::cout << v.coords[1][1];
+		std::cout << v.coords[2][2];
+		std::cout << v.coords[3][3];
 	}
 	return 0;
 }

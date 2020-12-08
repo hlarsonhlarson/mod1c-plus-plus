@@ -1,7 +1,7 @@
 PHONY: clean fclean re all
 
 FILENAMES = parse_map.cpp
-FILENAMES += parse_file.cpp Point.cpp
+FILENAMES += parse_file.cpp Point.cpp point_transform.cpp
 NAME = mod1
 
 SRCS	=$(addprefix srcs/, $(FILENAMES))
